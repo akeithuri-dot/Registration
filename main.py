@@ -4,6 +4,9 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash  # Added for hashing
 import os
 
+app = Flask(__name__)
+app.secret_key = 'Almazan'
+
 db_user = os.environ.get("MYSQLUSER")
 db_password = os.environ.get("MYSQLPASSWORD")
 db_host = os.environ.get("MYSQLHOST")
@@ -13,7 +16,9 @@ db_name = os.environ.get("MYSQLDATABASE")
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 )
-)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
 
 # MODEL
 
