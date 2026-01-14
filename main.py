@@ -11,7 +11,8 @@ db_port = os.environ.get("MYSQLPORT")
 db_name = os.environ.get("MYSQLDATABASE")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{user_db  }"
+    f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+)
 )
 
 # MODEL
